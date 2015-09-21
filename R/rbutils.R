@@ -1,11 +1,4 @@
-#load packages required by functions in this file
-library(dplyr, quietly=TRUE)
-library(stringr, quietly=TRUE)
-library(readxl, quietly=TRUE)
-library(xlsx, quietly=TRUE)
-library(tools, quietly=TRUE)
-library(meta, quietly=TRUE)
-library(ggmcmc, quietly=TRUE)
+# A collection of utility functions
 
 factorToCharacter = function(df){
   #takes a data frame and converts all factor variables to characters
