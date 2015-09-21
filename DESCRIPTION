@@ -1,10 +1,9 @@
 Package: rbutils
 Type: Package
-Title: What the Package Does (Title Case)
+Title: A collection of general purpose utility functions
 Version: 0.1
 Date: 2015-09-21
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Authors@R: person("Richard", "Birnie", email="richard.birnie@googlemail.com", role=c("aut", "cre"))
+Description: A collection of general purpose utility functions
+License: GPL-3
 LazyData: TRUE
