@@ -15,4 +15,12 @@ The same data frame but with factors converted to character
 \description{
 Take a data frame and convert all factor variables to character variables
 }
+\examples{
+data(iris)
+class(iris$Species)
+[1] "factor"
+iris = factorToCharacter(iris)
+class(iris$Species)
+[1] "character"
+}
 

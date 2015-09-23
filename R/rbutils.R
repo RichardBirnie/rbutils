@@ -4,6 +4,13 @@
 #'
 #' @param df A data frame with at least one character column
 #' @return The same data frame but with factors converted to character
+#' @examples
+#' data(iris)
+#' class(iris$Species)
+#' [1] "factor"
+#' iris = factorToCharacter(iris)
+#' class(iris$Species)
+#' [1] "character"
 factorToCharacter = function(df) {
   df[sapply(df, is.factor)] <- lapply(df[sapply(df, is.factor)],
                                       as.character)
