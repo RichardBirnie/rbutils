@@ -17,7 +17,7 @@ Capitalise the first letter of each word in a string
 }
 \examples{
 # A single character string with two words
-capwords('one two')#'
+capwords('one two')
 # Three character strings. The first has two words the last two
  have one word each
 capwords(c('one two', 'three', 'four'))
