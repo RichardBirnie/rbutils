@@ -115,6 +115,11 @@ saveXLSX = function(x, file, sheetName = "Sheet1", col.names = TRUE, row.names =
             row.names, showNA = showNA, append = TRUE
         )
       }
+    } else {
+      xlsx::write.xlsx(
+        as.data.frame(x), file = file, sheetName = sheetName, col.names = col.names, row.names =
+          row.names, showNA = showNA, append = append
+      )
     }
   } else {
     xlsx::write.xlsx(
