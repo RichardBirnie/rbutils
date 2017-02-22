@@ -7,4 +7,6 @@ Authors@R: person("Richard", "Birnie", email="richard.birnie@googlemail.com", ro
 Description: A collection of general purpose utility functions
 License: GPL-3
 LazyData: TRUE
-Imports: xlsx (>= 0.5.7)
+Imports:
+    xlsx (>= 0.5.7)
+RoxygenNote: 5.0.1

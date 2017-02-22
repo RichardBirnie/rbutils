@@ -128,3 +128,21 @@ saveXLSX = function(x, file, sheetName = "Sheet1", col.names = TRUE, row.names =
     )
   }
 }
+
+#' A simple function to create directories
+#'
+#' @param path A character string indicating the directory you want to create
+#'
+#' @examples
+#' path <- 'C:/Users/rbirnie/Documents/example'
+#' mkdir(path)
+#'
+#' #This version creates all the subfolders down to the specified number of levels
+#' path <- 'C:/Users/rbirnie/Documents/example/level2/level3/level4'
+#' mkdir(path)
+mkdir <- function(path){
+  if(!dir.exists(path)){
+    dir.create(path = path, recursive = TRUE)
+  }
+  message(paste0('Created directory: ', path))
+}
