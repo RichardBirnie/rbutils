@@ -8,5 +8,6 @@ Description: A collection of general purpose utility functions
 License: GPL-3
 LazyData: TRUE
 Imports:
+    haven (>= 1.0.0),
     xlsx (>= 0.5.7)
 RoxygenNote: 5.0.1

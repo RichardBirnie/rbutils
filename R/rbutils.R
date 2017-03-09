@@ -11,6 +11,7 @@
 #' iris = factorToCharacter(iris)
 #' class(iris$Species)
 #' [1] "character"
+#' @export
 factorToCharacter = function(df) {
   df[sapply(df, is.factor)] <- lapply(df[sapply(df, is.factor)],
                                       as.character)
@@ -27,6 +28,7 @@ factorToCharacter = function(df) {
 #' # Three character strings. The first has two words the last two
 #'  have one word each
 #' capwords(c('one two', 'three', 'four'))
+#' @export
 capwords <- function(s, strict = FALSE) {
   cap <- function(s) paste(toupper(substring(s, 1, 1)),
                            {s <- substring(s, 2); if(strict) tolower(s) else s},
@@ -88,6 +90,7 @@ capwords <- function(s, strict = FALSE) {
 #' overwrite=FALSE)
 #'
 #' @seealso \code{\link[xlsx]{write.xlsx}}
+#' @export
 saveXLSX = function(x, file, sheetName = "Sheet1", col.names = TRUE, row.names = FALSE,
                     append = FALSE, showNA = FALSE, overwrite = TRUE) {
 
@@ -140,9 +143,42 @@ saveXLSX = function(x, file, sheetName = "Sheet1", col.names = TRUE, row.names =
 #' #This version creates all the subfolders down to the specified number of levels
 #' path <- 'C:/Users/rbirnie/Documents/example/level2/level3/level4'
 #' mkdir(path)
+#' @export
 mkdir <- function(path){
   if(!dir.exists(path)){
     dir.create(path = path, recursive = TRUE)
   }
   message(paste0('Created directory: ', path))
+}
+
+#' Convert sas7bdat files to CSV
+#'
+#' @param sas.dir Path to a directory full of SAS files in sas7bdat format
+#' @param csv.dir Path to a directory where csv files should be saved. If this
+#'   directory does not exist it will be created automatically if possible
+#'
+#' @details This function takes two arguments. A file path to a directory
+#'   containing one or more SAS files and a file path to a directory where you
+#'   would like the corresponding csv files to be saved. The conversin relies on
+#'   the \code{read_sas} function from the haven package. You will need to
+#'   install this if you do not have it already.
+#'   \code{install.packages('haven')}
+#'
+#' @seealso \code{\link[haven]{read_sas}}
+#' @export
+sas2csv <- function(sas.dir, csv.dir){
+  #if the output directory does not exist then create it
+  if(!dir.exists(csv.dir)){
+    dir.create(csv.dir, recursive = TRUE)
+  }
+
+  #list of SAS filenames
+  sas.files <- list.files(sas.dir, full.names = TRUE, pattern = '.sas7bdat')
+
+  #import SAS file and export as CSV
+  for(i in 1:length(sas.files)){
+    f.name <- gsub('sas7bdat', 'csv', basename(sas.files[i]))
+    sas.f <- haven::read_sas(sas.files[i])
+    write.csv(sas.f, file = file.path(csv.dir, f.name), quote = FALSE, row.names = FALSE)
+  }
 }
